@@ -1,0 +1,40 @@
+*** Settings ***
+Library  SeleniumLibrary
+Resource  ../CustomLibs/Config.robot
+
+*** Variables ***
+${Search_Box}=  //input[@id='filterLinks']
+${HSS_link} =  //a[@href='/hss/landing']
+
+*** Keywords ***
+Begin Web Test
+    Open Browser    about:blank    ${BROWSER}
+    maximize browser window
+
+End Web Test
+    close browser
+
+PressEnterKey
+    set selenium implicit wait  5 Seconds
+    press keys  None    RETURN
+
+Load HSS Landing Page
+    go to  ${URL.${ENVIRONMENT}}
+    sleep    2 seconds
+    Log  ${URL}
+
+Verify Landing Page Load
+    set selenium implicit wait    15 Seconds
+    wait until element is visible   ${Search_Box}    10 Seconds
+
+Load MedicareUDLSCovegare Page
+    go to  ${URL_Unsecured_Medicare.${ENVIRONMENT}}
+    sleep    2 seconds
+    Log  ${URL_Unsecured_Medicare}
+
+Delete Unnecessary Screenshots
+    remove files  ${OUTPUTDIR}\\selenium-screenshot-*.png
+    remove files  ${OUTPUTDIR}\\Screenshots\\selenium-screenshot-*.png
+    remove files  ${OUTPUTDIR}\\Screenshots\\Medicare_UDLSCoverage\\selenium-screenshot-*.png
+    remove files  ${OUTPUTDIR}\\Screenshots\\Medicare_ZipPlanValidation\\selenium-screenshot-*.png
+    remove files  ${OUTPUTDIR}\\Screenshots\\DrugPricing\\selenium-screenshot-*.png

@@ -1,0 +1,24 @@
+*** Settings ***
+
+*** Variables ***
+${ENVIRONMENT} =  prod
+#${ENVIRONMENT} =  qa
+#${BROWSER} =  chrome
+${BROWSER} =  edge
+#${BROWSER} =  ie
+&{URL_Epost}  qa=https://qa-hi.humana.com/hss/landing/   prod=https://qa1-epostrx.humana.com/ansHealthConsole/htmljsp/system/login.jsp
+&{URL}  qa=https://qa-hi.humana.com/hss/landing/   prod=https://hi.humana.com/hss/landing
+&{URL_Unsecured_Medicare}  qa=https://drug-list-search.apps.external.pioneer-qa.humana.com/medicare   prod=https://drug-list-search.apps.external.pioneer.humana.com/medicare
+&{URL_Unsecured_Commercial}  qa=https://drug-list-search.apps.external.pioneer-qa.humana.com/employer   prod=https://drug-list-search.apps.external.pioneer.humana.com/employer
+#${INSTANCE} =    offcycleqa
+${INSTANCE} =    prod
+#${INSTANCE} =    qa2
+
+
+#Note:
+# *************** PRODUCTION RUN *************************
+# >>>>    robot -d results -v environment:prod  tests/006__managequeues.robot
+
+# *************** QA Instances RUN Commands*************************
+# >>>>    robot -d results -v instance:qa2  tests/006__managequeues.robot
+# >>>>    robot -d results -v instance:offcycleqa  tests/006__managequeues.robot

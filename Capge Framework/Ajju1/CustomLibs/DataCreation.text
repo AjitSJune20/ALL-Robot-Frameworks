@@ -1,0 +1,9 @@
+*** Settings ***
+Resource  ../CustomLibs/DataManager.robot
+
+#   robot -d results CustomLibs/DataCreation.robot
+*** Test Cases ***
+Sample Test
+    Get Data and Format
+
+
